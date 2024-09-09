@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+    restart: always
+    command: gunicorn -b 0.0.0.0:80 project.wsgi:application

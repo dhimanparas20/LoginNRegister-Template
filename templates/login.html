@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Login/Signup Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="glassmorph p-8 rounded-lg max-w-sm w-full transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+        <div class="tabs">
+            <button class="tab-btn" id="loginTab">Login</button>
+            <button class="tab-btn" id="registerTab">Signup</button>
+        </div>
+
+        <form id="loginForm" class="form active">
+            <h2 class="text-3xl font-semibold text-center text-white mb-8">Login</h2>
+            <div class="loader"></div>
+
+            <div class="relative mb-6">
+                <input type="text" id="loginUsername" class="w-full p-3 text-lg bg-transparent border-b-2 border-white focus:outline-none text-white" required>
+                <label class="absolute top-3 left-3 text-white transition duration-300 transform scale-75 origin-left -translate-y-6">Username</label>
+            </div>
+            <div class="relative mb-6">
+                <input type="password" id="loginPassword" class="w-full p-3 text-lg bg-transparent border-b-2 border-white focus:outline-none text-white" required>
+                <label class="absolute top-3 left-3 text-white transition duration-300 transform scale-75 origin-left -translate-y-6">Password</label>
+            </div>
+            <button type="submit" class="w-full py-3 mt-4 text-lg text-white bg-opacity-30 bg-white rounded-lg hover:bg-opacity-50 transition duration-300">Login</button>
+        </form>
+
+        <form id="registerForm" class="form">
+            <h2 class="text-3xl font-semibold text-center text-white mb-8">Signup</h2>
+            <div class="loader"></div>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="relative">
+                    <input type="text" id="firstName" class="w-full p-3 text-lg bg-transparent border-b-2 border-white focus:outline-none text-white" required>
+                    <label class="absolute top-3 left-3 text-white transition duration-300 transform scale-75 origin-left -translate-y-6">First Name</label>
+                </div>
+                <div class="relative">
+                    <input type="text" id="lastName" class="w-full p-3 text-lg bg-transparent border-b-2 border-white focus:outline-none text-white" required>
+                    <label class="absolute top-3 left-3 text-white transition duration-300 transform scale-75 origin-left -translate-y-6">Last Name</label>
+                </div>
+            </div>
+            <div class="relative mb-6">
+                <input type="email" id="email" class="w-full p-3 text-lg bg-transparent border-b-2 border-white focus:outline-none text-white" required>
+                <label class="absolute top-3 left-3 text-white transition duration-300 transform scale-75 origin-left -translate-y-6">Email</label>
+            </div>
+            <div class="relative mb-6">
+                <input type="text" id="registerUsername" class="w-full p-3 text-lg bg-transparent border-b-2 border-white focus:outline-none text-white" required>
+                <label class="absolute top-3 left-3 text-white transition duration-300 transform scale-75 origin-left -translate-y-6">Username</label>
+            </div>
+            <div class="relative mb-6">
+                <input type="password" id="registerPassword" class="w-full p-3 text-lg bg-transparent border-b-2 border-white focus:outline-none text-white" required>
+                <label class="absolute top-3 left-3 text-white transition duration-300 transform scale-75 origin-left -translate-y-6">Password</label>
+            </div>
+            <button type="submit" class="w-full py-3 mt-4 text-lg text-white bg-opacity-30 bg-white rounded-lg hover:bg-opacity-50 transition duration-300">Signup</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>

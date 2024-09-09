@@ -1,0 +1,45 @@
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite;
+}
+
+.glassmorph {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tab-btn.active, .tab-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.form {
+    display: none;
+}
+
+.form.active {
+    display: block;
+}

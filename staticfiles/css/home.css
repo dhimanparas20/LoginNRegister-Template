@@ -1,0 +1,48 @@
+.dashboard {
+    background-color: #f4f4f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+}
+.nav-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+}
+.nav-bar .btn {
+    color: #fff;
+    border-color: #007bff;
+}
+.nav-bar .btn:hover {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.container {
+    flex: 1;
+    padding: 2rem;
+}
+.card {
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.card-header {
+    background-color: #007bff;
+    color: #fff;
+}
+.card-body {
+    padding: 1.5rem;
+}
+@media (max-width: 768px) {
+    .header, .card-body {
+        font-size: 0.875rem;
+    }
+}
