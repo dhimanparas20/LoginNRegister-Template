@@ -19,10 +19,9 @@
     <meta name="twitter:description" content="Join ABVGIET College and embark on a journey of knowledge and innovation.">
     <meta name="twitter:image" content="https://www.abvgiet.ac.in/logo.png"> <!-- Replace with actual logo URL -->
 
-    <title>ABVGIET Gossips</title>
+    <title>Poll</title>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'img/logo.png' %}">
+    <link rel="{% static 'img/logo.png' %}" type="image/x-icon">
 
     <style>
 :root {
@@ -34,36 +33,12 @@
     --background-image: url('light-mode-image.jpg'); /* Replace with your light mode image URL */
 }
 
-#logoutButton {
-    background-color: #f686f6; /* Red background */
-    color: white; /* White text */
-    font-size: 16px; /* Slightly larger font */
-    padding: 10px 20px; /* Add some padding */
-    border: none; /* Remove border */
-    border-radius: 8px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: all 0.3s ease; /* Smooth hover effect */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-#logoutButton:hover {
-    background-color: #d124e1; /* Darker red on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
-    transform: translateY(-2px); /* Slight lift */
-}
-
-#logoutButton:active {
-    background-color: #ecb5b5; /* Even darker red on click */
-    transform: translateY(0); /* Reset lift */
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow */
-}
-
 body.dark {
     --background-color: #000000;
     --text-color: #ffffff;
     --card-background: rgba(255, 255, 255, 0.2);
     --card-text: #ffffff;
-    --background-image: url("{% static 'img/bg.jpg' %}"); /* Replace with your dark mode image URL */
+    --background-image: url('bg.jpg'); /* Replace with your dark mode image URL */
 }
 
 body {
@@ -152,7 +127,6 @@ body {
         .menu-toggle {
             display: none;
         }
-
         .mobile-menu {
             display: none;
             background-color: var(--accent-color);
@@ -175,13 +149,7 @@ body {
             margin-bottom: 2rem;
         }
 
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .blog-card {
+        .poll-card {
             background-color: var(--card-background);
             border-radius: 12px;
             overflow: hidden;
@@ -190,43 +158,85 @@ body {
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             transition: transform 0.3s, box-shadow 0.3s;
+            margin: 0 auto;
+            max-width: 600px;
         }
 
-        .blog-card:hover {
+        .poll-card:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .blog-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .blog-card-content {
+        .poll-card-content {
             padding: 1rem;
         }
 
-        .blog-card h2 {
-            margin: 0 0 0.5rem;
+        .poll-card h2 {
+            margin: 0 0 1rem;
             color: var(--card-text);
         }
 
-        .blog-card-meta {
+        .poll-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .poll-option {
             display: flex;
             justify-content: space-between;
-            font-size: 0.875rem;
-            color: var(--card-text);
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .poll-option:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .poll-graph {
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+            height: 200px;
+            justify-content: space-around;
+        }
+
+        .poll-bar {
+            width: 50px;
+            border-radius: 8px;
+            background-color: var(--accent-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .poll-bar span {
+            color: #fff;
+            font-weight: bold;
+            margin-top: 5px;
         }
 
         footer {
             background-color: var(--accent-color);
             color: var(--text-color);
             text-align: center;
-            padding: 0.1rem 0;
+            padding: 1rem 0;
             margin-top: 2rem;
         }
+        .footer{
+            width: 100%;
+            position:absolute;
+            top:650px;
 
+        }
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -240,7 +250,6 @@ body {
                 display: flex;
             }
         }
-            /* Logo styles */
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
@@ -267,10 +276,8 @@ body {
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
             text-align: center; /* Center-align the footer text */
         }
-
     </style>
 </head>
-
 <body class="dark">
     <nav class="navbar">
         <div class="container">
@@ -281,8 +288,7 @@ body {
             
             <div class="nav-links">
                 <a href="/">Home</a>
-                <a href="api/meme/">Memes</a>
-                <a href="api/poll/">Opinions</a>
+                <a href="http://localhost:5000/api/meme/">Memes</a>
                 <button id="darkModeToggle" class="icon-button">
                     <i data-lucide="sun"></i>
                 </button>
@@ -294,7 +300,6 @@ body {
             <button id="menuToggle" class="icon-button menu-toggle">
                 <i data-lucide="menu"></i>
             </button>
-            <button id="logoutButton" class="btn btn-outline-light">Logout</button>
         </div>
     </nav>
 
@@ -309,10 +314,11 @@ body {
         </div>
     </div>
 
+
     <main class="container">
-        <h1>Latest Gossips</h1>
-        <div class="blog-grid" id="blogGrid">
-            <!-- Blog posts will be dynamically inserted here -->
+        <h1>Poll</h1>
+        <div class="poll-card" id="pollCard">
+            <!-- Poll content will be dynamically inserted here -->
         </div>
     </main>
 
@@ -320,7 +326,58 @@ body {
         <p>&copy; 2024 ABVGIET Happenings. All rights reserved.</p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{% static 'js/Home.js' %}"></script>
+    <script>
+        // Poll data (mock data)
+        const poll = {
+            question: "What is your favorite programming language?",
+            options: [
+                { id: 1, text: "JavaScript", votes: 120 },
+                { id: 2, text: "Python", votes: 100 },
+                { id: 3, text: "Java", votes: 80 },
+                { id: 4, text: "C++", votes: 50 }
+            ]
+        };
+
+        // Function to create poll card
+        function createPollCard() {
+            const card = document.getElementById('pollCard');
+            const maxVotes = Math.max(...poll.options.map(option => option.votes));
+            card.innerHTML = `
+                <div class="poll-card-content">
+                    <h2>${poll.question}</h2>
+                    <div class="poll-options">
+                        ${poll.options.map(option => `
+                            <div class="poll-option" onclick="vote(${option.id})">
+                                <span>${option.text}</span>
+                                <span>${option.votes} votes</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <br>
+                    <div class="poll-graph">
+                        ${poll.options.map(option => {
+                            const barHeight = (option.votes / maxVotes) * 100; // Scale bar height
+                            return `
+                                <div class="poll-bar" style="height: ${barHeight}%">
+                                    <span>${option.text}</span>
+                                    <span>${option.votes}</span>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to vote for an option
+        function vote(optionId) {
+            const option = poll.options.find(opt => opt.id === optionId);
+            option.votes++;
+            createPollCard();
+        }
+
+        // Initialize the poll card on page load
+        window.onload = createPollCard;
+    </script>
 </body>
 </html>

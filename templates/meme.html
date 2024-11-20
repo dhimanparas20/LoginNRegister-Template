@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,13 +20,11 @@
     <meta name="twitter:description" content="Join ABVGIET College and embark on a journey of knowledge and innovation.">
     <meta name="twitter:image" content="https://www.abvgiet.ac.in/logo.png"> <!-- Replace with actual logo URL -->
 
-    <title>ABVGIET Gossips</title>
+    <title>Memes</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'img/logo.png' %}">
-
     <style>
-:root {
+       :root {
     --background-color: #ffffff;
     --text-color: #333333;
     --card-background: rgba(255, 255, 255, 0.1);
@@ -34,36 +33,12 @@
     --background-image: url('light-mode-image.jpg'); /* Replace with your light mode image URL */
 }
 
-#logoutButton {
-    background-color: #f686f6; /* Red background */
-    color: white; /* White text */
-    font-size: 16px; /* Slightly larger font */
-    padding: 10px 20px; /* Add some padding */
-    border: none; /* Remove border */
-    border-radius: 8px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: all 0.3s ease; /* Smooth hover effect */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-#logoutButton:hover {
-    background-color: #d124e1; /* Darker red on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
-    transform: translateY(-2px); /* Slight lift */
-}
-
-#logoutButton:active {
-    background-color: #ecb5b5; /* Even darker red on click */
-    transform: translateY(0); /* Reset lift */
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow */
-}
-
 body.dark {
     --background-color: #000000;
     --text-color: #ffffff;
     --card-background: rgba(255, 255, 255, 0.2);
     --card-text: #ffffff;
-    --background-image: url("{% static 'img/bg.jpg' %}"); /* Replace with your dark mode image URL */
+    --background-image: url('bg.jpg'); /* Replace with your dark mode image URL */
 }
 
 body {
@@ -86,7 +61,7 @@ body {
         }
 
         .navbar {
-            background-color: rgba(163, 126, 249, 0.2); 
+            background-color: rgba(163, 126, 249, 0.2);
             backdrop-filter: blur(10px); /* Apply the blur effect */
             -webkit-backdrop-filter: blur(10px); /* For Safari support */
             border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Light border for separation */
@@ -152,15 +127,12 @@ body {
         .menu-toggle {
             display: none;
         }
-
         .mobile-menu {
             display: none;
             background-color: var(--accent-color);
             padding: 1rem;
             flex-direction: column;
-        }
-
-        .mobile-menu a {
+        } .mobile-menu a {
             color: var(--text-color);
             text-decoration: none;
             padding: 0.5rem 0;
@@ -175,13 +147,14 @@ body {
             margin-bottom: 2rem;
         }
 
-        .blog-grid {
+        .meme-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .blog-card {
+        .meme-card {
             background-color: var(--card-background);
             border-radius: 12px;
             overflow: hidden;
@@ -190,41 +163,77 @@ body {
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
         }
 
-        .blog-card:hover {
+        .meme-card:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .blog-card img {
+        .meme-card img {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: auto;
+            display: block;
         }
 
-        .blog-card-content {
+        .meme-card-content {
             padding: 1rem;
+            text-align: center;
         }
 
-        .blog-card h2 {
-            margin: 0 0 0.5rem;
+        .meme-card h3 {
+            margin: 0.5rem 0;
             color: var(--card-text);
         }
 
-        .blog-card-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.875rem;
-            color: var(--card-text);
+        .like-button {
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
         }
 
+        .like-button:hover {
+            background-color: #6c3aef;
+        }
         footer {
             background-color: var(--accent-color);
             color: var(--text-color);
             text-align: center;
-            padding: 0.1rem 0;
+            padding: 1rem 0;
             margin-top: 2rem;
+        }
+        .footer{
+            width: 100%;
+            position:absolute;
+            top:650px;
+
+        }
+
+        .upload-container {
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .upload-container input {
+            padding: 0.5rem 1rem;
+            margin: 1rem 0;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .upload-container img {
+            max-width: 100%;
+            margin-top: 1rem;
         }
 
         @media (max-width: 768px) {
@@ -240,7 +249,6 @@ body {
                 display: flex;
             }
         }
-            /* Logo styles */
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
@@ -256,7 +264,7 @@ body {
             margin-right: 10px; /* Space between the logo and text */
         }  
         footer {
-            background-color: rgba(163, 126, 249, 0.2); 
+            background-color: rgba(163, 126, 249, 0.2);
             backdrop-filter: blur(10px); /* Apply the blur effect */
             -webkit-backdrop-filter: blur(10px); /* For Safari support */
             border-top: 1px solid rgba(255, 255, 255, 0.1); /* Light border for separation */
@@ -267,10 +275,8 @@ body {
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
             text-align: center; /* Center-align the footer text */
         }
-
     </style>
 </head>
-
 <body class="dark">
     <nav class="navbar">
         <div class="container">
@@ -278,11 +284,10 @@ body {
                 <img src="{% static 'img/logo.png' %}" alt="BlogHub Logo">
                 ABVGIET Happenings
             </a>
-            
+           
             <div class="nav-links">
                 <a href="/">Home</a>
-                <a href="api/meme/">Memes</a>
-                <a href="api/poll/">Opinions</a>
+                <a href="http://localhost:5000/api/poll/">Opinions</a>
                 <button id="darkModeToggle" class="icon-button">
                     <i data-lucide="sun"></i>
                 </button>
@@ -294,25 +299,22 @@ body {
             <button id="menuToggle" class="icon-button menu-toggle">
                 <i data-lucide="menu"></i>
             </button>
-            <button id="logoutButton" class="btn btn-outline-light">Logout</button>
         </div>
     </nav>
 
-    <div id="mobileMenu" class="mobile-menu">
-        <a href="#">Home</a>
-        <a href="#">Categories</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <div class="search-container">
-            <input type="text" placeholder="Search...">
-            <i data-lucide="search"></i>
-        </div>
-    </div>
-
     <main class="container">
-        <h1>Latest Gossips</h1>
-        <div class="blog-grid" id="blogGrid">
-            <!-- Blog posts will be dynamically inserted here -->
+        <h1>Meme Gallery</h1>
+
+        <!-- Upload Meme -->
+        {% comment %} <div class="upload-container">
+            <h2>Upload a Meme</h2>
+            <input type="file" id="memeUpload" accept="image/*" onchange="previewImage()">
+            <div id="imagePreview"></div> <!-- Image preview will go here -->
+        </div> {% endcomment %}
+
+        <!-- Meme Cards -->
+        <div class="meme-grid" id="memeGrid">
+            <!-- Meme cards will be inserted here dynamically -->
         </div>
     </main>
 
@@ -320,7 +322,63 @@ body {
         <p>&copy; 2024 ABVGIET Happenings. All rights reserved.</p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{% static 'js/Home.js' %}"></script>
+    <script>
+        // Meme data related to college life
+        const memes = [
+            { id: 1, imageUrl: 'https://i.imgflip.com/5gce76.jpg', title: 'When the professor asks a question and you have no idea', likes: 20 },
+            { id: 2, imageUrl: 'https://static.boredpanda.com/blog/wp-content/uploads/2021/05/B7894F8F-BD2F-4067-B150-04C763EEF3B6-60a7bc8bed38f-jpeg__700.jpg', title: 'That one friend who always has the answers in group projects', likes: 15 },
+            { id: 3, imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXsWcARAHJ5lAqZUSbdIu14CS-ABcGbOZEVk7Ok04OBqq1LP8bxq_9B6x0EyI128-15uY&usqp=CAU', title: 'The struggle of studying for finals', likes: 30 },
+            { id: 4, imageUrl: 'https://cdn-useast1.kapwing.com/static/templates/spongebob-health-inspector-choking-and-wiping-mouth-with-napkin-thumbnail-b9d427e6.webp', title: 'Trying to make sense of lecture slides at 2 AM', likes: 25 },
+            { id: 5, imageUrl: 'https://i.pinimg.com/736x/32/a4/42/32a4427e816fc2514348a089f77c6d40.jpg', title: 'When the cafeteria serves something edible for once', likes: 18 }
+        ];
+
+        // Function to create a meme card
+        function createMemeCard(meme) {
+            return `
+                <div class="meme-card">
+                    <img src="${meme.imageUrl}" alt="${meme.title}">
+                    <div class="meme-card-content">
+                        <h3>${meme.title}</h3>
+                        <p>${meme.likes} Likes</p>
+                        <button class="like-button" onclick="likeMeme(${meme.id})">Like</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to handle liking a meme
+        function likeMeme(memeId) {
+            const meme = memes.find(m => m.id === memeId);
+            meme.likes++;
+            renderMemes(); // Re-render memes to update the like count
+        }
+
+        // Render all memes
+        function renderMemes() {
+            const memeGrid = document.getElementById('memeGrid');
+            memeGrid.innerHTML = memes.map(createMemeCard).join('');
+        }
+
+        // Function to preview the selected image
+        function previewImage() {
+            const fileInput = document.getElementById('memeUpload');
+            const imagePreview = document.getElementById('imagePreview');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    imagePreview.innerHTML = ''; // Clear previous preview
+                    imagePreview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Initialize memes on page load
+        window.onload = renderMemes;
+    </script>
 </body>
 </html>

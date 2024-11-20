@@ -1,0 +1,331 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlogHub - Blog Content</title>
+<link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root {
+--background-color: #ffffff;
+--text-color: #333333;
+--card-background: rgba(255, 255, 255, 0.1);
+--card-text: #ffffff;
+--accent-color: #8B5CF6;
+}
+
+body.dark {
+--background-color: #000000;
+--text-color: #ffffff;
+--card-background: rgba(255, 255, 255, 0.2);
+--card-text: #ffffff;
+}
+
+body {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+background-color: var(--background-color);
+color: var(--text-color);
+transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
+
+.navbar {
+background-color: rgba(163, 126, 249, 0.2);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+padding: 1rem 0;
+position: sticky;
+top: 0;
+z-index: 1000;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.logo {
+font-size: 1.5rem;
+font-weight: bold;
+color: var(--text-color);
+text-decoration: none;
+display: flex;
+align-items: center;
+}
+
+.logo img {
+height: 60px;
+margin-right: 10px;
+}
+
+.nav-links a {
+color: var(--text-color);
+text-decoration: none;
+margin-left: 1rem;
+}
+
+main {
+padding-top: 2rem;
+ 
+
+}
+
+.blog-card {
+background-color: var(--card-background);
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+transform: translateY(20px);
+opacity: 0;
+animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+100% {
+transform: translateY(0);
+opacity: 1;
+}
+}
+
+.blog-card img {
+width: 100%;
+height: 200px;
+object-fit: cover;
+}
+
+.blog-card-content {
+padding: 1rem;
+}
+
+.blog-writer {
+display: flex;
+align-items: center;
+margin-bottom: 1rem;
+}
+
+.blog-writer img {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+margin-right: 10px;
+}
+
+.share-button {
+margin-top: 1rem;
+background-color: #25D366;
+color: white;
+border: none;
+padding: 0.5rem 1rem;
+border-radius: 20px;
+cursor: pointer;
+font-size: 1rem;
+display: flex;
+align-items: center;
+}
+
+.share-button i {
+margin-right: 0.5rem;
+}
+footer {
+background-color: var(--accent-color);
+color: var(--text-color);
+text-align: center;
+padding: 1rem 0;
+margin-top: auto;
+}
+.blog-grid {
+margin-top: 2rem; /* Adjust the value as needed */
+}
+.interaction-section {
+margin-top: 2rem;
+padding: 1.5rem;
+background-color: var(--card-background);
+border-radius: 12px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+}
+ 
+
+.likes {
+display: flex;
+align-items: center;
+margin-bottom: 1rem;
+}
+ 
+
+.likes button {
+background-color: var(--accent-color);
+color: var(--text-color);
+border: none;
+border-radius: 20px;
+padding: 0.5rem 1rem;
+font-size: 1rem;
+cursor: pointer;
+display: flex;
+align-items: center;
+}
+ 
+
+.likes button i {
+margin-right: 0.5rem;
+}
+ 
+
+.comments {
+margin-top: 1rem;
+}
+ 
+
+.comments h3 {
+margin-bottom: 1rem;
+font-size: 1.5rem;
+}
+ 
+
+.comment-box {
+display: flex;
+flex-direction: column;
+margin-bottom: 1rem;
+}
+ 
+
+.comment-box textarea {
+width: 100%;
+height: 100px;
+border: none;
+border-radius: 12px;
+padding: 0.5rem;
+margin-bottom: 0.5rem;
+resize: none;
+background-color: rgba(255, 255, 255, 0.1);
+color: var(--text-color);
+}
+ 
+
+.comment-box button {
+align-self: flex-end;
+background-color: var(--accent-color);
+color: var(--text-color);
+border: none;
+padding: 0.5rem 1rem;
+border-radius: 20px;
+cursor: pointer;
+}
+ 
+
+.comment-list {
+margin-top: 1rem;
+}
+ 
+
+.comment {
+margin-bottom: 1rem;
+padding: 0.5rem 1rem;
+border-radius: 8px;
+background-color: rgba(255, 255, 255, 0.1);
+opacity: 0;
+transform: translateY(10px);
+animation: fadeIn 0.3s forwards;
+}
+ 
+
+ 
+
+@keyframes fadeIn {
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+ 
+
+</style>
+</head>
+
+<body class="dark">
+<nav class="navbar">
+<div class="container">
+<a href="#" class="logo">
+<img src="{% static 'img/logo.png' %}" alt="BlogHub Logo">
+ABVGIET Happenings
+</a>
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="api/meme/">Memes</a>
+<a href="api/poll/">Opinions</a>
+</div>
+</div>
+</nav>
+
+<main class="container">
+<div class="blog-grid">
+<div class="blog-card">
+<div class="blog-writer">
+<img src="https://picsum.photos/50" alt="Writer's Profile">
+<span>Written by <strong>{{blog.username}}</strong></span>
+</div>
+
+<img src="http://localhost:5000/media/{{ blog.image }}" alt="Blog Image">
+<div class="blog-card-content">
+<h1>{{blog.title}}</h1>
+<p>
+{{blog.content}}
+{{blog.image}}
+</p>
+<button class="share-button" id="shareButton">
+<i data-lucide="share-2"></i> Share on WhatsApp
+</button>
+</div>
+ 
+
+ 
+
+</div>
+<div class="interaction-section">
+<div class="likes">
+<button id="likeButton">
+<i data-lucide="heart"></i>
+<span id="likeCount">0</span> Likes
+</button>
+</div>
+ 
+
+<div class="comments">
+<h3>Comments</h3>
+<div class="comment-box">
+<textarea id="commentInput" placeholder="Write a comment..."></textarea>
+<button id="addCommentButton">Add Comment</button>
+</div>
+<div class="comment-list" id="commentList">
+<!-- Comments will appear here -->
+</div>
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+<p>&copy; 2024 ABVGIET Happenings. All rights reserved.</p>
+</footer>
+
+<script src="blogDetail.js"></script>
+</body>
+</html>
