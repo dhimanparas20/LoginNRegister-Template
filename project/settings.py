@@ -28,7 +28,6 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 # Application definition
 INSTALLED_APPS = [
     'regnlogin',
-    'blog',
     'django_filters',
     'rest_framework',
     'corsheaders', 
@@ -158,7 +157,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1), 
 }
 
@@ -195,9 +194,6 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
-
-MEDIA_ROOT =  path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
 
 
 if (env.bool("AUTO_CLEAR_TERMINAL")):

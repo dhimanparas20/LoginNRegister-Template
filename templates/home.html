@@ -4,323 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta Tags for ABVGIET College -->
-    <meta name="author" content="ABVGIET College">
-    <meta name="description" content="ABVGIET College - Dedicated to excellence in education and fostering innovation among students. Explore our courses, faculty, and campus life.">
-    <meta name="keywords" content="ABVGIET, College, Education, Courses, Engineering, Technology, Innovation, Himachal Pradesh, Student Life">
-    <meta name="robots" content="index, follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="ABVGIET College - Excellence in Education">
-    <meta property="og:description" content="Explore ABVGIET College, offering a dynamic environment for students to grow and innovate.">
-    <meta property="og:image" content="https://www.abvgiet.ac.in/logo.png"> <!-- Replace with actual logo URL -->
-    <meta property="og:url" content="https://www.abvgiet.ac.in"> <!-- Replace with the official URL -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ABVGIET College - Excellence in Education">
-    <meta name="twitter:description" content="Join ABVGIET College and embark on a journey of knowledge and innovation.">
-    <meta name="twitter:image" content="https://www.abvgiet.ac.in/logo.png"> <!-- Replace with actual logo URL -->
-
-    <title>ABVGIET Gossips</title>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'img/logo.png' %}">
-
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
     <style>
-:root {
-    --background-color: #ffffff;
-    --text-color: #333333;
-    --card-background: rgba(255, 255, 255, 0.1);
-    --card-text: #ffffff;
-    --accent-color: #8B5CF6;
-    --background-image: url('light-mode-image.jpg'); /* Replace with your light mode image URL */
-}
-
-#logoutButton {
-    background-color: #f686f6; /* Red background */
-    color: white; /* White text */
-    font-size: 16px; /* Slightly larger font */
-    padding: 10px 20px; /* Add some padding */
-    border: none; /* Remove border */
-    border-radius: 8px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: all 0.3s ease; /* Smooth hover effect */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-#logoutButton:hover {
-    background-color: #d124e1; /* Darker red on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
-    transform: translateY(-2px); /* Slight lift */
-}
-
-#logoutButton:active {
-    background-color: #ecb5b5; /* Even darker red on click */
-    transform: translateY(0); /* Reset lift */
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow */
-}
-
-body.dark {
-    --background-color: #000000;
-    --text-color: #ffffff;
-    --card-background: rgba(255, 255, 255, 0.2);
-    --card-text: #ffffff;
-    --background-image: url("{% static 'img/bg.jpg' %}"); /* Replace with your dark mode image URL */
-}
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-color);
-    background-image: var(--background-image);
-    background-size: cover; /* Ensures the image covers the entire screen */
-    background-repeat: no-repeat; /* Prevents tiling of the image */
-    background-position: center; /* Centers the image */
-    color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s, background-image 0.3s;
-}
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .navbar {
-            background-color: rgba(163, 126, 249, 0.2); 
-            backdrop-filter: blur(10px); /* Apply the blur effect */
-            -webkit-backdrop-filter: blur(10px); /* For Safari support */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Light border for separation */
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--text-color);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin-left: 1rem;
-        }
-
-        .icon-button {
-            background: none;
-            border: none;
-            color: var(--text-color);
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .search-container {
-            position: relative;
-            margin-left: 1rem;
-        }
-
-        .search-container input {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 20px;
-            padding: 0.5rem 1rem 0.5rem 2.5rem;
-            color: var(--text-color);
-        }
-
-        .search-container i {
-            position: absolute;
-            left: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .menu-toggle {
-            display: none;
-        }
-
-        .mobile-menu {
-            display: none;
-            background-color: var(--accent-color);
-            padding: 1rem;
-            flex-direction: column;
-        }
-
-        .mobile-menu a {
-            color: var(--text-color);
-            text-decoration: none;
-            padding: 0.5rem 0;
-        }
-
-        main {
-            padding: 2rem 0;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .blog-card {
-            background-color: var(--card-background);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .blog-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .blog-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .blog-card-content {
-            padding: 1rem;
-        }
-
-        .blog-card h2 {
-            margin: 0 0 0.5rem;
-            color: var(--card-text);
-        }
-
-        .blog-card-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.875rem;
-            color: var(--card-text);
-        }
-
-        footer {
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            text-align: center;
-            padding: 0.1rem 0;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .mobile-menu.active {
-                display: flex;
-            }
-        }
-            /* Logo styles */
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--text-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        /* Add logo image to the left */
-        .logo img {
-            height: 60px; /* Adjust the size of the logo */
-            margin-right: 10px; /* Space between the logo and text */
-        }  
-        footer {
-            background-color: rgba(163, 126, 249, 0.2); 
-            backdrop-filter: blur(10px); /* Apply the blur effect */
-            -webkit-backdrop-filter: blur(10px); /* For Safari support */
-            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Light border for separation */
-            padding: 0.5rem 0; /* Reduced padding for less thickness */
-            position: sticky;
-            bottom: 0;
-            z-index: 1000;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
-            text-align: center; /* Center-align the footer text */
-        }
-
+        
     </style>
 </head>
-
-<body class="dark">
-    <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">
-                <img src="{% static 'img/logo.png' %}" alt="BlogHub Logo">
-                ABVGIET Happenings
-            </a>
-            
-            <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="api/meme/">Memes</a>
-                <a href="api/poll/">Opinions</a>
-                <button id="darkModeToggle" class="icon-button">
-                    <i data-lucide="sun"></i>
-                </button>
-                <div class="search-container">
-                    <input type="text" placeholder="Search...">
-                    <i data-lucide="search"></i>
-                </div>
-            </div>
-            <button id="menuToggle" class="icon-button menu-toggle">
-                <i data-lucide="menu"></i>
-            </button>
+<body class="dashboard">
+    <div class="header">
+        <div class="nav-bar">
             <button id="logoutButton" class="btn btn-outline-light">Logout</button>
         </div>
-    </nav>
-
-    <div id="mobileMenu" class="mobile-menu">
-        <a href="#">Home</a>
-        <a href="#">Categories</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <div class="search-container">
-            <input type="text" placeholder="Search...">
-            <i data-lucide="search"></i>
-        </div>
+        <h1>Welcome to Your Dashboard</h1>
     </div>
-
-    <main class="container">
-        <h1>Latest Gossips</h1>
-        <div class="blog-grid" id="blogGrid">
-            <!-- Blog posts will be dynamically inserted here -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        User Information
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="username"></h5>
+                        <p class="card-text" id="fullname"></p>
+                        <p class="card-text" id="email"></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 ABVGIET Happenings. All rights reserved.</p>
-    </footer>
-
+        <div class="loader"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{% static 'js/Home.js' %}"></script>
+    <script src="{% static 'js/home.js' %}"></script>
 </body>
 </html>
